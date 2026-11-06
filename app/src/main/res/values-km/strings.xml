@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">កម្មវិធីតាមដានចំណាយ</string>
+    <string name="top_app_bar_title">កម្មវិធីតាមដានចំណាយ</string>
+    <string name="total_this_month">សរុបខែនេះ</string>
+    <string name="spending_by_category">ចំណាយតាមប្រភេទ</string>
+    <string name="recent_expenses">ចំណាយថ្មីៗ</string>
+    <string name="add_expense">បន្ថែមចំណាយ</string>
+    <string name="delete">លុប</string>
+    <string name="undo">ត្រឡប់វិញ</string>
+    <string name="no_expenses_yet">មិនទាន់មានចំណាយនៅឡើយទេ</string>
+    <string name="expense_deleted">បានលុបចំណាយ</string>
+    <string name="category_food">អាហារ</string>
+    <string name="category_transport">ការធ្វើដំណើរ</string>
+    <string name="category_shopping">ការទិញទំនិញ</string>
+    <string name="category_bills">វិក្កយបត្រ</string>
+    <string name="category_other">ផ្សេងៗ</string>
+</resources>

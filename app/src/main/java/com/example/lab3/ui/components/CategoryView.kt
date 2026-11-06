@@ -1,7 +1,5 @@
 package com.example.lab3.ui.components
 
-
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,8 +12,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import com.example.lab3.R
 import com.example.lab3.data.Expense
+
+@Composable
+fun getCategoryDisplayName(category: String): String {
+    return when (category.lowercase()) {
+        "food" -> stringResource(id = R.string.category_food)
+        "transport" -> stringResource(id = R.string.category_transport)
+        "shopping" -> stringResource(id = R.string.category_shopping)
+        "bills" -> stringResource(id = R.string.category_bills)
+        "other" -> stringResource(id = R.string.category_other)
+        else -> category
+    }
+}
 
 @Composable
 fun CategoryView(expenses: List<Expense>, modifier: Modifier = Modifier) {
@@ -23,24 +35,39 @@ fun CategoryView(expenses: List<Expense>, modifier: Modifier = Modifier) {
         .mapValues { entry -> entry.value.sumOf { it.amount } }
     val maxSpending = categoryTotals.values.maxOrNull() ?: 1.0
 
-    Column(modifier = modifier.padding(16.dp)) {
-        Text(text = "Spending by Category", style = MaterialTheme.typography.titleMedium)
-        Spacer(modifier = Modifier.height(8.dp))
+    Column(modifier = modifier.padding(dimensionResource(id = R.dimen.padding_normal))) {
+        Text(
+            text = stringResource(id = R.string.spending_by_category),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
 
         categoryTotals.forEach { (category, total) ->
-            Column(modifier = Modifier.padding(vertical = 4.dp)) {
+            Column(modifier = Modifier.padding(vertical = dimensionResource(id = R.dimen.padding_extra_small))) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(text = category)
-                    Text(text = "$${"%.2f".format(total)}")
+                    Text(
+                        text = getCategoryDisplayName(category),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Text(
+                        text = "$${"%.2f".format(total)}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
                 }
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_extra_small)))
                 LinearProgressIndicator(
                     progress = { (total / maxSpending).toFloat() },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(8.dp)
+                        .height(dimensionResource(id = R.dimen.progress_height)),
+                    color = MaterialTheme.colorScheme.primary,
+                    trackColor = MaterialTheme.colorScheme.surfaceVariant
                 )
             }
         }

@@ -1,3 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">lab3</string>
+    <string name="app_name">Expense Tracker</string>
+    <string name="top_app_bar_title">Expense Tracker</string>
+    <string name="total_this_month">This Month\'s Total</string>
+    <string name="spending_by_category">Spending by Category</string>
+    <string name="recent_expenses">Recent Expenses</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="delete">Delete</string>
+    <string name="undo">Undo</string>
+    <string name="no_expenses_yet">No expenses yet</string>
+    <string name="expense_deleted">Expense deleted</string>
+    <string name="category_food">Food</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_bills">Bills</string>
+    <string name="category_other">Other</string>
 </resources>
